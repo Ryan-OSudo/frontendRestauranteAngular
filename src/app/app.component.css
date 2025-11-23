@@ -46,7 +46,7 @@ main {
 
 /* Título/Branding - Casa de Vó */
 .brand-title {
-  color: #ffffff; /* Laranja/Dourado de destaque (do site) */
+  color: #ffc107; /* Laranja/Dourado de destaque (do site) */
   font-size: 180%; /* Aumentei um pouco para destaque */
   font-weight: 500;
   margin-right: 10px;

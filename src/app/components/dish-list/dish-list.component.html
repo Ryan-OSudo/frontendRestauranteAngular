@@ -1,0 +1,61 @@
+<div class="dish-list-screen">
+
+  <div *ngIf="showNotification" class="toast-notification">
+    {{ notificationMessage }}
+  </div>
+
+  <h2>🍽️ Cardápio Disponível</h2>
+
+  <div class="header-actions">
+    <a routerLink="/add-dish" class="action-button add-button">
+      + Adicionar Novo Prato
+    </a>
+  </div>
+
+  <div class="dish-cards-container">
+    <div *ngFor="let dish of dishes" class="dish-card">
+      
+      <div class="card-content">
+        <h3 class="dish-name">{{ dish.name }}</h3>
+        
+        <p class="dish-price">
+          {{ dish.price | currency:'BRL':'symbol':'1.2-2' }}
+        </p>
+        
+        <p class="dish-description">{{ dish.description }}</p>
+      </div>
+
+      <div class="card-actions">
+        <div class="quantity-control">
+          <label for="qty-{{dish.id}}">Qtd:</label>
+          <input 
+            type="number" 
+            id="qty-{{dish.id}}" 
+            [(ngModel)]="dish.quantity" 
+            min="1" 
+            class="quantity-input"
+          >
+        </div>
+        
+        <button (click)="addToCart(dish)" class="action-button cart-button">
+          Adicionar ao Carrinho
+        </button>
+
+        <div class="management-actions">
+          <a [routerLink]="['/edit-dish', dish.id]" class="action-button edit-button">
+            Editar
+          </a>
+          <button (click)="deleteDish(dish.id)" class="action-button delete-button">
+            Excluir
+          </button>
+        </div>
+      </div>
+      
+      <span class="dish-id">ID: {{ dish.id }}</span>
+    </div>
+
+    <div *ngIf="dishes.length === 0" class="empty-message">
+        <p>Nenhum prato cadastrado no cardápio.</p>
+    </div>
+  </div>
+</div>

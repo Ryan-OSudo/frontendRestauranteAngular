@@ -1,0 +1,38 @@
+<div class="cart-screen">
+  <div class="header">
+    <a routerLink="/cliente/menu" class="back-button">←</a>
+    <h2 class="header-title">Carrinho</h2>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-notification">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div class="cart-content">
+    <div *ngIf="items.length > 0" class="cart-item-list">
+      <div *ngFor="let item of items" class="cart-item">
+        <span class="item-name">{{ item.name }}</span>
+
+        <div class="item-details">
+          <span class="item-price">{{ item.price | currency:'BRL':'symbol':'1.2-2' }}</span>
+          <span class="item-quantity">{{ item.quantity }}x</span>
+
+          <i class="trash-icon" (click)="remove(item)">🗑️</i>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="items.length === 0" class="empty-cart-message">
+      <p>Seu carrinho está vazio.</p>
+      <a routerLink="/cliente/menu" class="back-to-menu-link">Voltar ao menu</a>
+    </div>
+  </div>
+
+  <div *ngIf="items.length > 0" class="footer-container">
+    <p class="total-text">
+      <strong>Total:</strong>
+      {{ total | currency:'BRL':'symbol':'1.2-2' }}
+    </p>
+    <button (click)="checkout()" class="checkout-button">Finalizar</button>
+  </div>
+</div>

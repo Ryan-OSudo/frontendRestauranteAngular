@@ -1,0 +1,193 @@
+/* ========================================================= */
+/* 🛒 Estilos do Componente Carrinho (cart.component.css)    */
+/* ========================================================= */
+
+.cart-screen {
+    background-color: #121212; 
+    color: #E0E0E0; 
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Header / Topo --- */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 20px;
+    position: relative;
+    box-shadow: 0 1px 0 rgba(30, 30, 30, 0.7);
+}
+
+.back-button {
+    position: absolute;
+    left: 20px;
+    font-size: 24px;
+    color: #E0E0E0;
+    text-decoration: none;
+}
+
+.header-title {
+    font-size: 1.5em; 
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #C6AD84;
+}
+
+/* 🔔 NOTIFICAÇÃO DE ERRO ADICIONADA AQUI 🔔 */
+.error-notification {
+    background-color: #331111; /* Fundo vermelho escuro */
+    border: 1px solid #FF5252;
+    color: #FF5252;
+    padding: 12px 20px;
+    margin: 10px 20px; /* Garante que fique centralizado e afastado */
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(255, 82, 82, 0.2);
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% {transform: translateX(0);}
+    20%, 60% {transform: translateX(-5px);}
+    40%, 80% {transform: translateX(5px);}
+}
+
+/* --- Conteúdo Principal --- */
+.cart-content {
+    flex-grow: 1; 
+    padding: 20px 20px 0 20px; 
+    /* Adicionado padding-bottom maior para garantir que o último item não seja coberto pelo footer fixo */
+    padding-bottom: 120px; 
+}
+
+/* --- Lista de Itens --- */
+.cart-item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* --- Item Individual do Carrinho --- */
+.cart-item {
+    background-color: #1E1E1E;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.item-name {
+    font-size: 17px;
+    font-weight: 500;
+    color: #C6AD84;
+}
+
+.item-details {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.item-price {
+    font-size: 15px;
+    color: #B0B0B0;
+}
+
+.item-quantity {
+    font-size: 16px;
+    font-weight: 600;
+    color: #E0E0E0;
+}
+
+/* Estilos do ícone de lixeira (Remover) */
+.trash-icon {
+    font-size: 22px;
+    color: #FF5252;
+    cursor: pointer;
+    margin-left: 15px;
+    padding: 5px;
+    border-radius: 4px; 
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.2s ease-in-out, color 0.2s ease-in-out, transform 0.2s ease;
+}
+
+.trash-icon:hover {
+    border-bottom: 2px solid #FF1A1A;
+    color: #FF1A1A;
+    transform: scale(1.1);
+}
+
+/* --- Carrinho Vazio --- */
+.empty-cart-message {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.empty-cart-message p {
+    font-size: 1.2em;
+    color: #B0B0B0;
+    margin-bottom: 20px;
+}
+
+.back-to-menu-link {
+    color: #C6AD84;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid #C6AD84;
+    padding-bottom: 2px;
+}
+
+/* --- Rodapé (Total e Finalizar) - FIXO --- */
+.footer-container {
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+    padding: 20px; 
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1E1E1E;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.total-text {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #C6AD84;
+}
+
+.total-text strong {
+    font-weight: 500; 
+    color: #E0E0E0;
+}
+
+.checkout-button {
+    background-color: #C6AD84;
+    color: #121212;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color 0.2s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(198, 173, 132, 0.3);
+    
+    margin-right: 0; 
+}
+
+.checkout-button:hover {
+    background-color: #E0C8A7;
+    transform: translateY(-2px);
+}

@@ -1,0 +1,22 @@
+
+<router-outlet />
+
+
+<nav style="display:flex; gap:12px; align-items:center; padding:10px; border-bottom:1px solid #eee;">
+  <strong>SISTEMA ZAP ZAP</strong>
+
+  <!-- Cliente -->
+  <a routerLink="/cliente/menu">Menu</a>
+  <a routerLink="/cliente/carrinho">Carrinho</a>
+  <a routerLink="/cliente/historico">Histórico</a>
+
+  <!-- Cozinha -->
+  <a routerLink="/cozinha" style="margin-left:auto;">Cozinha</a>
+
+  <!-- Motoboy -->
+  <a routerLink="/motoboy">Motoboy</a>
+</nav>
+
+<main style="padding:16px;">
+  <router-outlet></router-outlet>
+</main>

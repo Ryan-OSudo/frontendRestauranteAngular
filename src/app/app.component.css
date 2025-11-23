@@ -1,0 +1,101 @@
+/* ========================================================= */
+/* 0. CORREÇÃO GLOBAL: Zera margens do navegador             */
+/* ========================================================= */
+/* (Recomendado no arquivo styles.css global, mas repetido aqui para garantir) */
+html, body {
+    margin: 20;
+    padding: 0;
+    width: 100%; 
+    min-height: 100%;
+}
+body {
+    background-color: #121212; /* Garante que o body é preto */
+}
+
+
+/* ========================================================= */
+/* 1. Estilos Base e Background                              */
+/* ========================================================= */
+/* O componente principal, onde a router-outlet renderiza. */
+:host {
+    /* Define o fundo preto escuro para toda a aplicação */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #121212; /* AGORA ESTÁ AQUI: Fundo Preto Escuro */
+    color: #E0E0E0; /* Texto principal em cinza claro */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Garante que o conteúdo principal ocupe o espaço restante */
+main {
+    /* CORRIGIDO: Deve ser flex-grow: 1 para ocupar o espaço restante
+       e garantir que o fundo preto de :host preencha a tela. */
+    flex-grow: 1; 
+    padding: 16px;
+
+    /* REMOVIDO: background-color: #121212; -> Já está no :host */
+}
+
+/* ========================================================= */
+/* 2. Estilos da Barra de Navegação (<nav>)                  */
+/* ========================================================= */
+nav {
+    background-color: #1e1e1e; /* Fundo ligeiramente mais claro que o corpo */
+    padding: 15px 20px; /* Mais padding para melhor visual */
+    border-bottom: 1px solid #333; /* Linha de separação discreta */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Sombra suave */
+    display: flex;
+    gap: 20px !important; /* Aumenta o espaçamento entre links */
+    align-items: center;
+}
+
+/* Título/Branding */
+nav strong {
+    color: #4CAF50; /* Verde de destaque */
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+/* Estilo para todos os links */
+nav a {
+    color: #B0B0B0; /* Cinza suave para os links normais */
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 500;
+    outline: none; /* Remove a borda de foco padrão */
+}
+
+/* Efeito Hover nos links */
+nav a:hover {
+    background-color: #2D2D2D; /* Fundo escuro ao passar o mouse */
+    color: white; /* Texto branco */
+}
+
+/* Estilo para o link ativo (rota atual) - Angular */
+nav a.active {
+    background-color: #4CAF50; /* Fundo verde para o link ativo */
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Estilo de foco personalizado e acessível (substitui a borda branca) */
+nav a:focus {
+    box-shadow: 0 0 0 2px #1e1e1e, 0 0 0 4px #4CAF50; 
+    background-color: #2D2D2D;
+}
+
+/* Estilo especial para Cozinha e Motoboy (posicionados à direita) */
+nav a[style*="margin-left:auto;"] {
+    margin-left: auto !important; /* Garante que o estilo CSS override o inline */
+    color: #FFC107; /* Amarelo/Laranja para áreas administrativas */
+}
+
+nav a[style*="margin-left:auto;"]:hover {
+    background-color: #3C3C3C;
+    color: #FFEB3B; /* Amarelo mais claro no hover */
+}

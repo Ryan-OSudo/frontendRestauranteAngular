@@ -1,0 +1,110 @@
+<div class="kitchen-screen">
+  <h2>Painel da Cozinha</h2>
+
+  <button (click)="loadOrders()">Atualizar Pedidos</button>
+
+  <div *ngIf="loading" class="loading-message">
+    <p>Carregando...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <div *ngIf="!loading && orders.length === 0 && !errorMessage" class="empty-message">
+    <p>Nenhum pedido ativo para preparo no momento.</p>
+  </div>
+
+  <div class="order-list-container" *ngIf="!loading && orders.length > 0">
+    
+    <div class="order-group to-prepare-orders">
+      <h3>🚨 Para Iniciar ({{ ordersToPrepare.length }})</h3>
+      
+      <div *ngIf="ordersToPrepare.length === 0" class="group-empty-message">
+        <p>Todos os pedidos foram iniciados.</p>
+      </div>
+
+      <div *ngFor="let order of ordersToPrepare" class="order-card card-new">
+        <div class="card-header">
+          <span class="order-id">#{{ order.id }}</span>
+          <span [class]="'order-status status-' + order.status">Novo Pedido</span>
+        </div>
+        
+        <div class="card-details">
+          <p class="detail-item total-amount">
+            <span class="label">Total:</span>
+            {{ order.total | currency:'BRL':'symbol':'1.2-2' }}
+          </p>
+          <p class="detail-item">
+            <span class="label">Chegada:</span> 
+            {{ order.createdAt | date:'shortTime' }}
+          </p>
+        </div>
+
+        <div class="item-list">
+          <h4>Itens:</h4>
+          <ul>
+            <li *ngFor="let item of order.items">
+              <span class="item-quantity">{{ item.quantity }}x</span> 
+              <span class="item-name">{{ item.dishName }}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-actions">
+          <button
+            *ngIf="order.status === 'CREATED'"
+            (click)="updateStatus(order, 'PREPARING')"
+            class="action-button prepare-button">
+            Iniciar Preparo
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="order-group preparing-orders">
+      <h3>👨‍🍳 Em Preparo ({{ ordersPreparing.length }})</h3>
+      
+      <div *ngIf="ordersPreparing.length === 0" class="group-empty-message">
+        <p>Nenhum pedido em produção.</p>
+      </div>
+
+      <div *ngFor="let order of ordersPreparing" class="order-card card-preparing">
+        <div class="card-header">
+          <span class="order-id">#{{ order.id }}</span>
+          <span [class]="'order-status status-' + order.status">Preparando</span>
+        </div>
+        
+        <div class="card-details">
+          <p class="detail-item total-amount">
+            <span class="label">Total:</span>
+            {{ order.total | currency:'BRL':'symbol':'1.2-2' }}
+          </p>
+          <p class="detail-item">
+            <span class="label">Iniciado:</span> 
+            {{ order.createdAt | date:'shortTime' }}
+          </p>
+        </div>
+        
+        <div class="item-list">
+          <h4>Itens:</h4>
+          <ul>
+            <li *ngFor="let item of order.items">
+              <span class="item-quantity">{{ item.quantity }}x</span> 
+              <span class="item-name">{{ item.dishName }}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-actions">
+          <button
+            *ngIf="order.status === 'PREPARING'"
+            (click)="updateStatus(order, 'READY_FOR_DELIVERY')"
+            class="action-button ready-button">
+            Pronto para Entrega
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

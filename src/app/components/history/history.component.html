@@ -1,0 +1,45 @@
+<h2>Histórico de Pedidos</h2>
+
+<button (click)="loadOrders()">Atualizar</button>
+
+<div *ngIf="loading">
+  <p>Carregando...</p>
+</div>
+
+<div *ngIf="errorMessage">
+  <p style="color: red;">{{ errorMessage }}</p>
+</div>
+
+<div *ngIf="!loading && orders.length === 0 && !errorMessage">
+  <p>Você ainda não tem pedidos.</p>
+</div>
+
+<table *ngIf="!loading && orders.length > 0" border="0" cellspacing="8" style="margin-top: 16px;">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Data</th>
+      <th>Status</th>
+      <th>Itens</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders">
+      <td>#{{ order.id }}</td>
+      <td>{{ order.createdAt | date:'short' }}</td>
+      <td [class]="'status-' + order.status">{{ getStatusLabel(order.status) }}</td>
+      <td>
+        <ul>
+          <li *ngFor="let item of order.items">
+            {{ item.quantity }}x {{ item.dishName }}
+            - {{ (item.unitPrice * item.quantity) | currency:'BRL':'symbol':'1.2-2' }}
+          </li>
+        </ul>
+      </td>
+      <td>
+        {{ order.total | currency:'BRL':'symbol':'1.2-2' }}
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,172 @@
+/* ========================================================= */
+/* Estilos do Componente (history.component.css)             */
+/* ========================================================= */
+
+/* 1. Estilos Base e Layout Geral */
+
+:host {
+    /* Define uma fonte mais atraente para Dark Mode */
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: block;
+    min-height: 100vh;
+    background-color: #121212; 
+    color: #E0E0E0; 
+    padding: 30px; /* Mais padding para respirar */
+    margin: 0;
+}
+
+/* Estilo do título */
+h2 {
+    color: #C6AD84; /* COR DE DESTAQUE APLICADA */
+    border-bottom: 3px solid #333; /* Borda mais grossa */
+    padding-bottom: 12px;
+    margin-bottom: 25px;
+    font-weight: 700; /* Mais peso */
+    font-size: 2em;
+}
+
+/* 2. Estilos para o Botão "Atualizar"     */
+button {
+    background-color: #1E1E1E; /* TOM ACIMA DO FUNDO (#121212) */
+    color: #C6AD84; /* TEXTO NA COR DE DESTAQUE */
+    border: 1px solid #333; /* Borda sutil */
+    padding: 12px 25px; /* Mais padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0 20px 0;
+    cursor: pointer;
+    border-radius: 6px; /* Ajuste sutil */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra neutra */
+}
+
+button:hover {
+    background-color: #2D2D2D; /* UM POUCO MAIS CLARO NO HOVER */
+    transform: translateY(-3px); /* Efeito sutil de elevação aprimorado */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+}
+
+button:active {
+    background-color: #3C3C3C; /* TOM ESCURO NO CLICK */
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* 3. Estilos de Status (Carregamento, Erro, Sem Pedidos) */
+
+div p {
+    padding: 10px 0;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+/* Destaque para o parágrafo de Carregamento (Azul mais suave) */
+p:first-child { 
+    color: #90CAF9; 
+    font-style: italic;
+}
+
+/* Estilo para a mensagem de erro (Use class="error-message" no seu HTML) */
+.error-message { 
+    color: #FF5252 !important;
+    background-color: #331111;
+    border: 1px solid #FF5252;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 15px;
+    display: inline-block; 
+}
+
+/* 4. Estilos da Tabela de Pedidos */
+table {
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0 10px; /* Espaçamento vertical entre linhas maior */
+    margin-top: 30px !important;
+    background-color: #1E1E1E; 
+    border-radius: 12px; /* Cantos mais arredondados */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); /* Sombra mais profunda */
+}
+
+/* Cabeçalho da Tabela */
+thead th {
+    background-color: #333; 
+    color: #FFFFFF; /* Texto branco puro */
+    padding: 18px 15px; /* Mais padding */
+    text-align: left;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    border-bottom: 3px solid #C6AD84; /* Destaque COR DE DESTAQUE */
+}
+
+/* Estilo da linha do corpo da tabela */
+tbody tr {
+    background-color: #2D2D2D;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 8px;
+}
+
+tbody tr:hover {
+    background-color: #3C3C3C;
+    transform: scale(1.005); /* Efeito sutil de zoom */
+}
+
+/* Estilo das células */
+tbody td {
+    padding: 18px 15px;
+    vertical-align: middle; /* Centraliza verticalmente o conteúdo */
+    border-top: 1px solid #333;
+}
+
+/* Estilização da lista de itens dentro da célula */
+ul li {
+    padding: 3px 0;
+    font-size: 0.95em;
+    color: #B0B0B0;
+    line-height: 1.5;
+}
+
+/* Destaque para o ID (primeira célula) */
+tbody tr td:first-child {
+    font-weight: 700;
+    color: #80CBC4; /* AZUL SUAVE PARA ID */
+    font-size: 1.05em;
+}
+
+/* Destaque para o Total (última célula) */
+tbody tr td:last-child {
+    font-weight: 700;
+    color: #C6AD84; /* Destaque COR DE DESTAQUE (TOTAL) */
+    font-size: 1.05em;
+}
+
+/* 5. Estilos de Cores para o Status */
+
+.status-CREATED {
+    color: #BDBDBD; /* Cinza suave */
+    font-weight: 700;
+}
+
+.status-PREPARING {
+    color: #F44336; /* Vermelho/Vinho (Fogo, Preparo) */
+    font-weight: 700;
+}
+
+.status-READY_FOR_DELIVERY {
+    color: #03A9F4; /* Azul (Aguardando Retirada/Entrega) */
+    font-weight: 700;
+}
+
+.status-EN_ROUTE {
+    color: #FFC107; /* Amarelo (A Caminho) */
+    font-weight: 700;
+}
+
+.status-DELIVERED {
+    color: #4CAF50; /* Verde de Sucesso */
+    font-weight: 700;
+}

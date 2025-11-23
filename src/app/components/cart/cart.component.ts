@@ -1,24 +1,26 @@
-// src/app/components/cart/cart.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { CartService, CartItem } from '../../services/cart.service';
-import { NgForOf, NgIf, CurrencyPipe } from '@angular/common';
+import { CommonModule } from '@angular/common'; // Inclui NgFor, NgIf, CurrencyPipe, e NgClass
 import { OrderService } from '../../services/order.service';
-import { Router, RouterModule } from '@angular/router'; // Adicione RouterModule aqui
+import { Router, RouterModule } from '@angular/router'; // Router e RouterModule
+
+// 1. Interface Estendida para incluir a propriedade de hover
+interface CartItemWithHover extends CartItem {
+  isHovered?: boolean;
+}
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [NgForOf, NgIf, CurrencyPipe, RouterModule], // Adicione RouterModule
+  // 2. Importar CommonModule e RouterModule para todas as diretivas e pipes
+  imports: [CommonModule, RouterModule],
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-
-  items: CartItem[] = [];
+  // 3. Usar a interface CartItemWithHover para os itens
+  items: CartItemWithHover[] = [];
   total = 0;
-  // Variável para armazenar a mensagem de erro do servidor
-  errorMessage: string | null = null; 
 
   constructor(
     private cartService: CartService,
@@ -31,8 +33,18 @@ export class CartComponent implements OnInit {
   }
 
   loadCart(): void {
-    this.items = this.cartService.getItems();
+    const rawItems = this.cartService.getItems();
+    // 4. Inicializar isHovered como false ao carregar os itens
+    this.items = rawItems.map((item) => ({
+      ...item,
+      isHovered: false,
+    }));
     this.total = this.cartService.getTotal();
+  }
+
+  // 5. Método setHover, chamado pelo (mouseenter) e (mouseleave)
+  setHover(item: CartItemWithHover, isHovered: boolean): void {
+    item.isHovered = isHovered;
   }
 
   increment(item: CartItem): void {
@@ -46,8 +58,6 @@ export class CartComponent implements OnInit {
   }
 
   remove(item: CartItem): void {
-    // Certificando-se de que o item.id é o dishId se o CartService usar dishId
-    // Se você estiver usando item.id no HTML, este é o local para corrigir.
     this.cartService.remove(item.dishId);
     this.loadCart();
   }
@@ -58,51 +68,26 @@ export class CartComponent implements OnInit {
   }
 
   checkout(): void {
-    this.errorMessage = null; // Limpa erros anteriores
-    
     if (this.items.length === 0) {
-      alert("Seu carrinho está vazio!");
+      alert('Seu carrinho está vazio!');
       return;
     }
 
-    // Mapeamento dos itens do carrinho para o formato esperado pelo serviço de pedidos
-    const orderItems = this.items.map(item => ({
-      // Assumindo que CartItem tem dishId e quantity, e o serviço precisa desses nomes:
+    const orderItems = this.items.map((item) => ({
       dishId: item.dishId,
       quantity: item.quantity,
-      // Se você precisar de dishName ou price aqui, inclua
     }));
 
     this.orderService.createOrder(orderItems).subscribe({
       next: (order) => {
-        // ✅ Sucesso: Pedido criado
-        console.log('Pedido criado:', order);
-        alert(`🎉 Pedido #${order.id} criado com sucesso!`);
+        alert('Pedido criado com sucesso!');
         this.cartService.clear();
         this.router.navigate(['/cliente/historico']);
       },
       error: (err) => {
-        // ❌ Erro: Tratamento de erro detalhado
-        console.error('Erro ao criar pedido:', err);
-        
-        // Mensagem de erro padrão
-        let displayMessage = "Erro desconhecido ao finalizar o pedido. Tente novamente.";
-
-        if (err.status === 400 && err.error && err.error.message) {
-          // Erro Bad Request (Ex: Dados inválidos retornados pelo backend)
-          displayMessage = `Falha nos dados: ${err.error.message}`;
-        } else if (err.status === 0) {
-          // Erro de rede ou CORS
-          displayMessage = "Falha de conexão com o servidor. Verifique sua rede.";
-        } else if (err.error && err.error.message) {
-          // Captura mensagem de erro vinda do corpo da resposta do servidor
-          displayMessage = `Erro do servidor: ${err.error.message}`;
-        }
-
-        // Armazena e exibe a mensagem de erro
-        this.errorMessage = displayMessage;
-        alert(`⚠️ Erro ao criar pedido:\n${displayMessage}`);
-      }
+        console.error(err);
+        alert('Erro ao criar pedido.');
+      },
     });
   }
 }

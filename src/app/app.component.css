@@ -1,101 +1,125 @@
-/* ========================================================= */
-/* 0. CORREÇÃO GLOBAL: Zera margens do navegador             */
-/* ========================================================= */
-/* (Recomendado no arquivo styles.css global, mas repetido aqui para garantir) */
-html, body {
-    margin: 20;
-    padding: 0;
-    width: 100%; 
-    min-height: 100%;
-}
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Parisienne&family=Montserrat:wght@400;700&family=Roboto:wght@300;400;700&family=Lato:wght@300;400;700&display=swap");
+
+html,
 body {
-    background-color: #121212; /* Garante que o body é preto */
+  /* Corrigindo margem, pois 20 é muito */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
 }
 
+body {
+  /* COR DE FUNDO PRINCIPAL DO TEMA: Preto Carvão/Azul Petróleo */
+  background-color: #1a2226;
+  color: #e0e0e0; /* Texto principal em cinza claro */
+  font-family: "Roboto", Arial, sans-serif; /* Usando uma das fontes importadas */
+}
 
-/* ========================================================= */
-/* 1. Estilos Base e Background                              */
-/* ========================================================= */
 /* O componente principal, onde a router-outlet renderiza. */
 :host {
-    /* Define o fundo preto escuro para toda a aplicação */
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #121212; /* AGORA ESTÁ AQUI: Fundo Preto Escuro */
-    color: #E0E0E0; /* Texto principal em cinza claro */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #1a2226;
 }
 
 /* Garante que o conteúdo principal ocupe o espaço restante */
 main {
-    /* CORRIGIDO: Deve ser flex-grow: 1 para ocupar o espaço restante
-       e garantir que o fundo preto de :host preencha a tela. */
-    flex-grow: 1; 
-    padding: 16px;
-
-    /* REMOVIDO: background-color: #121212; -> Já está no :host */
+  flex-grow: 1;
+  padding: 16px;
 }
 
 /* ========================================================= */
-/* 2. Estilos da Barra de Navegação (<nav>)                  */
+/* 2. Estilos da Barra de Navegação (.main-nav)              */
 /* ========================================================= */
-nav {
-    background-color: #1e1e1e; /* Fundo ligeiramente mais claro que o corpo */
-    padding: 15px 20px; /* Mais padding para melhor visual */
-    border-bottom: 1px solid #333; /* Linha de separação discreta */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Sombra suave */
-    display: flex;
-    gap: 20px !important; /* Aumenta o espaçamento entre links */
-    align-items: center;
+.main-nav {
+  background-color: #101518; /* Um tom ligeiramente mais escuro que o corpo */
+  padding: 15px 20px;
+  border-bottom: 1px solid #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  display: flex;
+  /* AQUI: Remove o 'gap: 20px' geral para os links de admin */
+  gap: 20px;
+  align-items: center;
 }
 
-/* Título/Branding */
-nav strong {
-    color: #4CAF50; /* Verde de destaque */
-    font-size: 1.2em;
-    font-weight: 700;
-    margin-right: 10px;
+/* Título/Branding - Casa de Vó */
+.brand-title {
+  color: #ffffff; /* Laranja/Dourado de destaque (do site) */
+  font-size: 180%; /* Aumentei um pouco para destaque */
+  font-weight: 500;
+  margin-right: 10px;
+  /* Fonte Cursiva Delicada */
+  font-family: "Arizonia", cursive;
 }
 
 /* Estilo para todos os links */
-nav a {
-    color: #B0B0B0; /* Cinza suave para os links normais */
-    text-decoration: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-weight: 500;
-    outline: none; /* Remove a borda de foco padrão */
+.main-nav a {
+  color: #b0b0b0; /* Cinza suave para os links normais */
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
 }
 
 /* Efeito Hover nos links */
-nav a:hover {
-    background-color: #2D2D2D; /* Fundo escuro ao passar o mouse */
-    color: white; /* Texto branco */
+.main-nav a:hover {
+  color: white; /* Texto branco */
 }
 
-/* Estilo para o link ativo (rota atual) - Angular */
-nav a.active {
-    background-color: #4CAF50; /* Fundo verde para o link ativo */
-    color: white;
-    font-weight: 600;
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+/* Estilo para o link ativo (rota atual) */
+.main-nav a.active {
+  color: #1a2226; /* Texto escuro para contraste */
+  font-weight: 600;
+  box-shadow: 0 0 5px rgba(235, 143, 64, 0.5);
 }
 
-/* Estilo de foco personalizado e acessível (substitui a borda branca) */
-nav a:focus {
-    box-shadow: 0 0 0 2px #1e1e1e, 0 0 0 4px #4CAF50; 
-    background-color: #2D2D2D;
+/* Estilo especial para links de administração (Cozinha e Motoboy) */
+.main-nav a:nth-child(5) {
+  /* CORREÇÃO APLICADA: Move o 5º item (Cozinha) e ele puxa o 6º item (Motoboy) junto. */
+  margin-left: auto;
 }
 
-/* Estilo especial para Cozinha e Motoboy (posicionados à direita) */
-nav a[style*="margin-left:auto;"] {
-    margin-left: auto !important; /* Garante que o estilo CSS override o inline */
-    color: #FFC107; /* Amarelo/Laranja para áreas administrativas */
+.admin-link {
+  color: #ffc107; /* Amarelo/Laranja para áreas administrativas */
+  /* Remove o padding lateral para o ícone */
+  padding: 8px 10px;
 }
 
-nav a[style*="margin-left:auto;"]:hover {
-    background-color: #3C3C3C;
-    color: #FFEB3B; /* Amarelo mais claro no hover */
+/* NOVO: Estilo para o ícone de Chef (SVG) */
+/* ========================================================= */
+/* 2. Estilos da Barra de Navegação (.main-nav)              */
+/* ========================================================= */
+
+/* ... código anterior ... */
+
+/* NOVO: Estilo para o ícone de Chef (SVG) - SELETORES SEPARADOS */
+.chef-icon,
+.moto-icon {
+  position: absolute;
+  display: fixed;
+}
+
+/* 🎯 AUMENTANDO O TAMANHO DO ÍCONE DO CHEF */
+.chef-icon svg {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+/* 🎯 DIMINUINDO O TAMANHO DO ÍCONE DO MOTOBOY */
+.moto-icon svg {
+  width: 40px !important; /* Mudei de 40px para 24px */
+  height: 40px !important; /* Mudei de 40px para 24px */
+}
+.chef-icon svg {
+  width: 50px !important;
+  height: 40px !important;
+}
+.chef-icon:houver svg {
+  width: 80px !important; /* O ícone NÃO vai crescer para 80px */
+  height: 80px !important;
 }

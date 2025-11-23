@@ -1,33 +1,39 @@
 <div class="cart-screen">
+  <!-- Header/Topo com Seta de Voltar e Título -->
   <div class="header">
     <a routerLink="/cliente/menu" class="back-button">←</a>
-    <h2 class="header-title">Carrinho</h2>
+    <h2 class="header-title">carrinho</h2>
   </div>
 
-  <div *ngIf="errorMessage" class="error-notification">
-    <p>{{ errorMessage }}</p>
-  </div>
-
+  <!-- Conteúdo Principal do Carrinho -->
   <div class="cart-content">
     <div *ngIf="items.length > 0" class="cart-item-list">
-      <div *ngFor="let item of items" class="cart-item">
+
+      <!-- Loop através dos itens -->
+      <div *ngFor="let item of items" class="cart-item" [ngClass]="{'item-hover-active': item.isHovered}">
+
         <span class="item-name">{{ item.name }}</span>
 
         <div class="item-details">
           <span class="item-price">{{ item.price | currency:'BRL':'symbol':'1.2-2' }}</span>
           <span class="item-quantity">{{ item.quantity }}x</span>
 
-          <i class="trash-icon" (click)="remove(item)">🗑️</i>
+          <!-- Ícone de Lixeira (Gatilho do Hover e Ação de Remoção) -->
+          <i class="trash-icon" (click)="remove(item)" (mouseenter)="setHover(item, true)" (mouseleave)="setHover(item, false)">
+            🗑️
+          </i>
         </div>
       </div>
     </div>
 
+    <!-- Mensagem de Carrinho Vazio -->
     <div *ngIf="items.length === 0" class="empty-cart-message">
       <p>Seu carrinho está vazio.</p>
       <a routerLink="/cliente/menu" class="back-to-menu-link">Voltar ao menu</a>
     </div>
   </div>
 
+  <!-- Rodapé FIXO (Total e Botão Finalizar) - AGORA COLADO NA BASE -->
   <div *ngIf="items.length > 0" class="footer-container">
     <p class="total-text">
       <strong>Total:</strong>
@@ -35,4 +41,6 @@
     </p>
     <button (click)="checkout()" class="checkout-button">Finalizar</button>
   </div>
+
+  <!-- A antiga div navbar-bottom FOI REMOVIDA daqui. -->
 </div>

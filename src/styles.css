@@ -1,21 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 /* O restante do seu CSS aqui */
 /* Zera as margens e preenchimentos padrão do navegador (CORREÇÃO DA BORDA BRANCA) */
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    /* Define 100% da altura para garantir que o background do body cubra toda a tela */
-    min-height: 100%; 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* Define 100% da altura para garantir que o background do body cubra toda a tela */
+  min-height: 100%;
 }
 
 /* Define o fundo e a fonte padrão para toda a aplicação */
 body {
-    background-color: #121212; /* Fundo Preto Escuro (Dark Mode) */
-    color: #E0E0E0; /* Cor de texto padrão (Cinza Claro) */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6; /* Melhora a legibilidade do texto */
+  background-color: #091011; /* Fundo Preto Escuro (Dark Mode) */
+  color: #e0e0e0; /* Cor de texto padrão (Cinza Claro) */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6; /* Melhora a legibilidade do texto */
 }
 
 /* ========================================================= */
@@ -23,30 +24,38 @@ body {
 /* ========================================================= */
 
 /* Define a cor padrão para todos os links */
-a {
-    color: #4CAF50; /* Verde de destaque */
-    text-decoration: none;
-    transition: color 0.3s ease;
+a:not(.admin-link) {
+  color: white; /* Verde de destaque */
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 /* Efeito ao passar o mouse */
 a:hover {
-    color: #5cb85c;
+  color: white;
 }
 
 /* Opcional: Define um estilo de foco acessível para todos os elementos interativos
    (para quando não for definido um estilo de foco específico no componente) */
-a:focus, button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.5); /* Brilho verde suave */
+a:focus,
+button:focus {
+  outline: none;
+  color: white;
 }
-
+.main-nav a.active:not(.admin-link) {
+  color: white; /* GARANTIDO: Força a letra a ser branca */
+}
 /* Estilos de cabeçalhos globais, caso não sejam sobreescritos */
-h1, h2, h3, h4, h5, h6 {
-    color: #E0E0E0;
-    margin-top: 0.5em;
-    margin-bottom: 0.8em;
-    font-weight: 600;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #e0e0e0;
+  margin-top: 0.5em;
+  margin-bottom: 0.8em;
+  font-weight: 600;
 }
 
 /* ========================================================= */
@@ -55,15 +64,19 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Estilo para listas sem marcadores (usado na sua tabela) */
 ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* Remove a linha sutil em volta das imagens (se houver) */
 img {
-    border: none;
-    max-width: 100%;
-    height: auto;
-    display: block;
+  border: none;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.active {
+  font-family: "Arizonia";
 }

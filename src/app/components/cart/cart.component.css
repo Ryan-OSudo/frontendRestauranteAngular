@@ -1,11 +1,10 @@
-/* ========================================================= */
-/* 🛒 Estilos do Componente Carrinho (cart.component.css)    */
-/* ========================================================= */
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap");
 
+/* --- Estilos Gerais da Tela --- */
 .cart-screen {
-  background-color: #121212;
-  color: #e0e0e0;
-  font-family: "Roboto", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #091011;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,186 +17,145 @@
   justify-content: center;
   padding: 16px 20px;
   position: relative;
-  box-shadow: 0 1px 0 rgba(30, 30, 30, 0.7);
+  box-shadow: 0 1px 0 rgba(30, 30, 30, 1);
 }
 
 .back-button {
   position: absolute;
   left: 20px;
   font-size: 24px;
-  color: #e0e0e0;
+  color: #ffffff;
   text-decoration: none;
 }
 
 .header-title {
-  font-size: 1.5em;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 400;
   text-transform: uppercase;
-  color: #c6ad84;
 }
 
-/* 🔔 NOTIFICAÇÃO DE ERRO ADICIONADA AQUI 🔔 */
-.error-notification {
-  background-color: #331111; /* Fundo vermelho escuro */
-  border: 1px solid #ff5252;
-  color: #ff5252;
-  padding: 12px 20px;
-  margin: 10px 20px; /* Garante que fique centralizado e afastado */
-  border-radius: 8px;
-  font-weight: 500;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(255, 82, 82, 0.2);
-  animation: shake 0.5s;
-}
-
-@keyframes shake {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  20%,
-  60% {
-    transform: translateX(-5px);
-  }
-  40%,
-  80% {
-    transform: translateX(5px);
-  }
-}
-
-/* --- Conteúdo Principal --- */
+/* --- Conteúdo Principal (Scrollável) --- */
 .cart-content {
   flex-grow: 1;
   padding: 20px 20px 0 20px;
-  /* Adicionado padding-bottom maior para garantir que o último item não seja coberto pelo footer fixo */
-  padding-bottom: 120px;
+  /* 💡 CORREÇÃO: Espaço para o Rodapé (apenas 80px) */
+  padding-bottom: 80px;
 }
 
-/* --- Lista de Itens --- */
 .cart-item-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
-/* --- Item Individual do Carrinho --- */
+/* --- Item do Carrinho --- */
 .cart-item {
-  background-color: #1e1e1e;
+  background-color: #0f1c22;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 18px 16px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+  /* Arredondamento solicitado */
+  border-radius: 15px;
+
+  margin-bottom: 10px;
+  cursor: pointer;
+
+  /* Transições para Hover/Zoom e Brilho */
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out,
+    background-color 0.3s ease-out;
+  box-shadow: none;
 }
 
-.item-name {
-  font-size: 17px;
-  font-weight: 500;
-  color: #c6ad84;
+/* Efeito de Hover/Zoom na barra inteira */
+.cart-item:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.15);
+  background-color: #152933;
+}
+
+/* CLASSE ATIVADA PELO HOVER DA LIXEIRA (usando [ngClass]) */
+.item-hover-active {
+  background-color: rgba(255, 0, 0, 0.15) !important;
+  transform: scale(1.01);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 .item-details {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
+  margin-left: auto;
+  border-radius: 15px;
 }
 
-.item-price {
-  font-size: 15px;
-  color: #b0b0b0;
-}
-
-.item-quantity {
-  font-size: 16px;
-  font-weight: 600;
-  color: #e0e0e0;
-}
-
-/* Estilos do ícone de lixeira (Remover) */
+/* --- Ícone da Lixeira (Linha e Brilho Focado) --- */
 .trash-icon {
-  font-size: 22px;
-  color: #ff5252;
+  font-size: 20px;
+  color: #ff4d4d;
   cursor: pointer;
   margin-left: 15px;
-  padding: 5px;
-  border-radius: 4px;
+  padding: 0;
+
+  /* Configuração inicial da linha e brilho (INVISÍVEIS) */
   border-bottom: 2px solid transparent;
-  transition: border-bottom 0.2s ease-in-out, color 0.2s ease-in-out,
-    transform 0.2s ease;
+  box-shadow: 0 0 0 transparent;
+  display: inline-block;
+
+  /* Transição para a linha e brilho */
+  transition: border-bottom 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
+    color 0.3s ease-in-out;
 }
 
 .trash-icon:hover {
+  /* 1. Ativa a linha vermelha sólida */
   border-bottom: 2px solid #ff1a1a;
-  color: #ff1a1a;
-  transform: scale(1.1);
+
+  /* 2. Adiciona o EFEITO DE LUZ (brilho) SÓ embaixo */
+  box-shadow: 0 3px 5px 0 rgba(255, 0, 0, 0.6);
+
+  /* Faz o ícone brilhar */
+  color: #fff;
 }
 
-/* --- Carrinho Vazio --- */
-.empty-cart-message {
-  text-align: center;
-  padding: 50px 0;
-}
-
-.empty-cart-message p {
-  font-size: 1.2em;
-  color: #b0b0b0;
-  margin-bottom: 20px;
-}
-
-.back-to-menu-link {
-  color: #c6ad84;
-  text-decoration: none;
-  font-weight: 600;
-  border-bottom: 1px solid #c6ad84;
-  padding-bottom: 2px;
-}
-
-/* --- Rodapé (Total e Finalizar) - FIXO --- */
+/* --- Rodapé FIXO (Total e Finalizar) --- */
 .footer-container {
   position: fixed;
-  bottom: 0;
+  bottom: 0; /* 💡 CORREÇÃO: Colado no fundo */
   left: 0;
-  width: 100%;
-
+  right: 0;
+  background-color: #0f1c22;
   padding: 20px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1e1e1e;
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
-  z-index: 100;
+  box-shadow: 0 -2px 10px #070d0f;
+  z-index: 10;
+
+  /* 💡 CORREÇÃO: Removemos o deslocamento, agora ele fica no bottom: 0 */
+  /* transform: translateY(-60px); */
 }
 
 .total-text {
-  font-size: 1.4em;
-  font-weight: 700;
-  color: #c6ad84;
-}
-
-.total-text strong {
+  font-size: 16px;
   font-weight: 500;
-  color: #e0e0e0;
 }
 
 .checkout-button {
-  background-color: #c6ad84;
-  color: #121212;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 6px;
+  background: #d38641;
+  color: #ffffff;
+  padding: 15px 30px;
+  border: 1px solid #1e1e1e;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
-  transition: background-color 0.2s, transform 0.2s;
-  box-shadow: 0 4px 10px rgba(198, 173, 132, 0.3);
-
-  margin-right: 0;
+  font-weight: 600;
+  text-transform: lowercase;
+  transition: background-color 0.2s;
+  font-family: "inter" Medium;
 }
-
-.checkout-button:hover {
-  background-color: #e0c8a7;
-  transform: translateY(-2px);
+h2 {
+  font-family: "arial";
 }
+/* 💡 ESTILOS REMOVIDOS: A antiga navbar-bottom e seus estilos foram removidos. */

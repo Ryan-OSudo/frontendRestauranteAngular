@@ -3,264 +3,265 @@
 /* ========================================================= */
 
 :host {
-    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: block;
-    min-height: 100vh;
-    background-color: #121212; 
-    color: #E0E0E0; 
-    padding: 30px; 
+  font-family: "Roboto", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: block;
+  min-height: 100vh;
+  background-color: #091011;
+  color: #e0e0e0;
+  padding: 30px;
 }
 
 /* --- Títulos e Botão Atualizar --- */
 
 h2 {
-    color: #C6AD84;
-    border-bottom: 3px solid #333; 
-    padding-bottom: 12px;
-    margin-bottom: 25px;
-    font-weight: 700;
-    font-size: 2.2em;
-    text-align: center;
+  color: #ffffff;
+  border-bottom: 3px solid #333;
+  padding-bottom: 12px;
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 2.2em;
+  text-align: center;
 }
 
 h3 {
-    color: #FFFFFF;
-    font-size: 1.6em;
-    font-weight: 700;
-    margin: 35px 0 15px 0;
-    padding-left: 10px;
-    border-left: 4px solid #C6AD84; 
+  color: #ffffff;
+  font-size: 1.6em;
+  font-weight: 700;
+  margin: 35px 0 15px 0;
+  padding-left: 10px;
+  border-left: 4px solid #c6ad84;
 }
 
 /* Botão Atualizar */
 button:not(.action-button) {
-    display: block;
-    margin: 0 auto 30px auto; 
-    background-color: #1E1E1E; 
-    color: #C6AD84; 
-    border: 1px solid #333; 
-    padding: 12px 30px; 
-    font-size: 18px; 
-    cursor: pointer;
-    border-radius: 8px; 
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    font-weight: 600;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: block;
+  margin: 0 auto 30px auto;
+  background-color: #c6ad84;
+  color: #000000;
+  border: 1px solid #333;
+  padding: 12px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 button:not(.action-button):hover {
-    background-color: #2D2D2D;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+  background-color: #2d2d2d;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
 }
 
 /* --- Mensagens --- */
 
 /* Mensagem principal quando não há pedidos */
 .empty-message p {
-    text-align: center;
-    padding: 50px 20px;
-    font-size: 1.5em; 
-    font-weight: 500;
-    color: #B0B0B0;
-    border: 1px dashed #333;
-    border-radius: 10px;
-    margin-top: 50px;
+  text-align: center;
+  padding: 50px 20px;
+  font-size: 1.5em;
+  font-weight: 500;
+  color: #b0b0b0;
+  border: 1px dashed #333;
+  border-radius: 10px;
+  margin-top: 50px;
 }
 
 /* Mensagens de erro */
-.error-message p { 
-    color: #FF5252 !important;
-    background-color: #331111;
-    border: 1px solid #FF5252;
-    padding: 12px;
-    border-radius: 6px;
-    margin-top: 15px;
-    display: block; 
+.error-message p {
+  color: #ff5252 !important;
+  background-color: #331111;
+  border: 1px solid #ff5252;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 15px;
+  display: block;
 }
 
 /* Mensagens de lista vazia (dentro dos grupos) */
 .group-empty-message p {
-    text-align: center;
-    font-style: italic;
-    padding: 30px;
-    color: #777;
-    background-color: #1E1E1E;
-    border-radius: 8px;
+  text-align: center;
+  font-style: italic;
+  padding: 30px;
+  color: #bbb9b9;
+  background-color: #0f1c22;
+  border-radius: 8px;
 }
 
 /* --- Layout das Listas (Duas Colunas) --- */
 
 .order-list-container {
-    display: grid;
-    gap: 30px;
-    grid-template-columns: 1fr 1fr; 
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr 1fr;
 }
 
 @media (max-width: 900px) {
-    .order-list-container {
-        grid-template-columns: 1fr;
-    }
+  .order-list-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* --- Cards de Pedidos --- */
 
 .order-card {
-    background-color: #1E1E1E;
-    padding: 25px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: #0f1c22;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .order-card:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
 }
 
 /* Header do Card */
 .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #333;
-    margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #333;
+  margin-bottom: 15px;
 }
 
 .order-id {
-    font-weight: 700;
-    font-size: 1.4em;
-    color: #C6AD84;
+  font-weight: 700;
+  font-size: 1.4em;
+  color: #c6ad84;
 }
 
 /* Status */
 .order-status {
-    font-size: 1em;
-    font-weight: 700;
-    padding: 6px 12px;
-    border-radius: 6px;
-    color: #121212; 
+  font-size: 1em;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: #121212;
 }
 
 /* Detalhes do Card */
 .card-details {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    font-size: 1em;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 1em;
 }
 
 .detail-item .label {
-    font-weight: 400;
-    color: #B0B0B0;
-    margin-right: 5px;
+  font-weight: 400;
+  color: #b0b0b0;
+  margin-right: 5px;
 }
 
 .total-amount {
-    font-weight: 700;
-    font-size: 1.1em;
-    color: #9CCC65; 
+  font-weight: 700;
+  font-size: 1.1em;
+  color: #9ccc65;
 }
 
 /* --- Cores de Status --- */
 
 .status-READY_FOR_DELIVERY {
-    background-color: #03A9F4; /* Azul Claro - Pronto p/ Pegar */
+  background-color: #03a9f4; /* Azul Claro - Pronto p/ Pegar */
 }
 
 .status-EN_ROUTE {
-    background-color: #FFC107; /* Amarelo - A Caminho */
+  background-color: #ffc107; /* Amarelo - A Caminho */
 }
 
 /* --- Botões de Ação --- */
 
 .card-actions {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .action-button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 1.1em;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    width: 90%;
-    text-transform: uppercase;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.1em;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  width: 90%;
+  text-transform: uppercase;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Botão: Pegar e sair (READY_FOR_DELIVERY -> EN_ROUTE) */
 .route-button {
-    background-color: #FFC107; /* Amarelo */
-    color: #121212;
+  background-color: #ffc107; /* Amarelo */
+  color: #121212;
 }
 
 .route-button:hover {
-    background-color: #FFD54F;
-    transform: translateY(-2px);
+  background-color: #ffd54f;
+  transform: translateY(-2px);
 }
 
 /* Botão: Confirmar Entrega (EN_ROUTE -> DELIVERED) */
 .delivered-button {
-    background-color: #4CAF50; /* Verde */
-    color: #121212;
+  background-color: #4caf50; /* Verde */
+  color: #121212;
 }
 
 .delivered-button:hover {
-    background-color: #66BB6A;
-    transform: translateY(-2px);
+  background-color: #66bb6a;
+  transform: translateY(-2px);
 }
 
 /* --- Estilos da Lista Horizontal (Rodapé - Opcional) --- */
 
 .quick-view-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 15px 30px;
-    background-color: #1E1E1E;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
-    z-index: 100;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 30px;
+  background-color: #1e1e1e;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+  z-index: 100;
 }
 
 .quick-view-footer h4 {
-    color: #B0B0B0;
-    font-size: 1em;
-    margin: 0 0 10px 0;
-    font-weight: 500;
+  color: #b0b0b0;
+  font-size: 1em;
+  margin: 0 0 10px 0;
+  font-weight: 500;
 }
 
 .delivered-list-horizontal {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto; 
-    padding-bottom: 10px; 
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 10px;
 }
 
 .delivered-card-small {
-    flex-shrink: 0; 
-    background-color: #2D2D2D;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 0.9em;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border: 1px solid #3C3C3C;
+  flex-shrink: 0;
+  background-color: #2d2d2d;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #3c3c3c;
 }
 
 .delivered-id {
-    font-weight: 700;
-    color: #9CCC65; 
+  font-weight: 700;
+  color: #9ccc65;
 }
 
 .delivered-time {
-    color: #B0B0B0;
+  color: #b0b0b0;
 }

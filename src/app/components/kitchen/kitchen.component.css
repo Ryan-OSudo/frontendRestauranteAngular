@@ -3,253 +3,254 @@
 /* ========================================================= */
 
 :host {
-    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: block;
-    min-height: 100vh;
-    background-color: #121212; 
-    color: #E0E0E0; 
-    padding: 30px; 
+  font-family: "Roboto", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: block;
+  min-height: 100vh;
+  background-color: #091011;
+  color: #e0e0e0;
+  padding: 30px;
 }
 
 /* --- Títulos e Botão Atualizar --- */
 
 h2 {
-    color: #C6AD84; /* Cor de Destaque */
-    border-bottom: 3px solid #333; 
-    padding-bottom: 12px;
-    margin-bottom: 25px;
-    font-weight: 700;
-    font-size: 2.2em;
-    text-align: center;
+  color: #d4d4d4; /* Cor de Destaque */
+  border-bottom: 3px solid #333;
+  padding-bottom: 12px;
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 2.2em;
+  text-align: center;
 }
 
 h3 {
-    color: #FFFFFF;
-    font-size: 1.6em;
-    font-weight: 700;
-    margin: 35px 0 15px 0;
-    padding-left: 10px;
-    border-left: 4px solid #C6AD84; /* Destaque da lista */
+  color: #ffffff;
+  font-size: 1.6em;
+  font-weight: 700;
+  margin: 35px 0 15px 0;
+  padding-left: 10px;
+  border-left: 4px solid #c6ad84; /* Destaque da lista */
 }
 
 /* Botão Atualizar */
 button:not(.action-button) {
-    display: block;
-    margin: 0 auto 30px auto; 
-    background-color: #1E1E1E; 
-    color: #C6AD84; 
-    border: 1px solid #333; 
-    padding: 12px 30px; 
-    font-size: 18px; 
-    cursor: pointer;
-    border-radius: 8px; 
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    font-weight: 600;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  display: block;
+  margin: 0 auto 30px auto;
+  background-color: #c6ad84;
+  color: #383838;
+  border: 1px solid #333;
+  padding: 12px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 button:not(.action-button):hover {
-    background-color: #2D2D2D;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+  background-color: #cfba9a;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
 }
 
 /* --- Mensagens --- */
 
 /* Mensagem principal quando não há pedidos */
 .empty-message p {
-    text-align: center;
-    padding: 50px 20px;
-    font-size: 1.5em; 
-    font-weight: 500;
-    color: #B0B0B0;
-    border: 1px dashed #333;
-    border-radius: 10px;
-    margin-top: 50px;
+  text-align: center;
+  padding: 50px 20px;
+  font-size: 1.5em;
+  font-weight: 500;
+  color: #b0b0b0;
+  border: 1px dashed #333;
+  border-radius: 10px;
+  margin-top: 50px;
 }
 
 /* Mensagens de erro */
-.error-message p { 
-    color: #FF5252 !important;
-    background-color: #331111;
-    border: 1px solid #FF5252;
-    padding: 12px;
-    border-radius: 6px;
-    margin-top: 15px;
-    display: block; 
+.error-message p {
+  color: #ff5252 !important;
+  background-color: #331111;
+  border: 1px solid #ff5252;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 15px;
+  display: block;
 }
 
 /* Mensagens de lista vazia (dentro dos grupos) */
 .group-empty-message p {
-    text-align: center;
-    font-style: italic;
-    padding: 30px;
-    color: #777;
-    background-color: #1E1E1E;
-    border-radius: 8px;
+  text-align: center;
+  font-style: italic;
+  padding: 30px;
+  color: #b8b6b6;
+  background-color: #0f1c22;
+  border-radius: 8px;
 }
 
 /* --- Layout das Listas (Duas Colunas) --- */
 
 .order-list-container {
-    display: grid;
-    gap: 30px;
-    /* Divide em duas colunas em telas maiores */
-    grid-template-columns: 1fr 1fr; 
+  display: grid;
+  gap: 30px;
+  /* Divide em duas colunas em telas maiores */
+  grid-template-columns: 1fr 1fr;
 }
 
 /* Garante que em telas menores as listas fiquem empilhadas */
 @media (max-width: 900px) {
-    .order-list-container {
-        grid-template-columns: 1fr;
-    }
+  .order-list-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* --- Cards de Pedidos --- */
 
 .order-card {
-    background-color: #1E1E1E;
-    padding: 25px;
-    border-radius: 10px; 
-    margin-bottom: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: #0f1c22;
+  padding: 25px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .order-card:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
 }
 
 /* Header do Card */
 .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #333;
-    margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #333;
+  margin-bottom: 15px;
 }
 
 .order-id {
-    font-weight: 700;
-    font-size: 1.4em;
-    color: #C6AD84; /* ID com a cor de destaque */
+  font-weight: 700;
+  font-size: 1.4em;
+  color: #c6ad84; /* ID com a cor de destaque */
 }
 
 /* Status */
 .order-status {
-    font-size: 1em;
-    font-weight: 700;
-    padding: 6px 12px;
-    border-radius: 6px;
-    color: #121212; 
+  font-size: 1em;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: #121212;
 }
 
 /* Detalhes do Card */
 .card-details {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-    font-size: 1em;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 1em;
 }
 
 .detail-item .label {
-    font-weight: 400;
-    color: #B0B0B0;
-    margin-right: 5px;
+  font-weight: 400;
+  color: #b0b0b0;
+  margin-right: 5px;
 }
 
 .total-amount {
-    font-weight: 700;
-    font-size: 1.1em;
-    color: #9CCC65; /* Verde Suave para o Total */
+  font-weight: 700;
+  font-size: 1.1em;
+  color: #9ccc65; /* Verde Suave para o Total */
 }
 
 /* Lista de Itens */
 .item-list h4 {
-    color: #E0E0E0;
-    font-size: 1.1em;
-    margin: 5px 0 10px 0;
+  color: #e0e0e0;
+  font-size: 1.1em;
+  margin: 5px 0 10px 0;
 }
 
 .item-list ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    border-top: 1px dashed #333;
-    padding-top: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px dashed #333;
+  padding-top: 10px;
 }
 
 .item-list ul li {
-    padding: 5px 0;
-    font-size: 1em;
-    border-bottom: 1px dotted #2D2D2D;
+  padding: 5px 0;
+  font-size: 1em;
+  border-bottom: 1px dotted #2d2d2d;
 }
 
 .item-quantity {
-    font-weight: 700;
-    color: #C6AD84;
-    margin-right: 8px;
+  font-weight: 700;
+  color: #c6ad84;
+  margin-right: 8px;
 }
 
 .item-name {
-    color: #E0E0E0;
+  color: #e0e0e0;
 }
 
 /* --- Cores de Status --- */
 
 .status-CREATED {
-    background-color: #03A9F4; /* Azul Claro - Novo Pedido */
+  background-color: #03a9f4; /* Azul Claro - Novo Pedido */
 }
 
 .status-PREPARING {
-    background-color: #FFB74D; /* Laranja Suave - Preparando */
+  background-color: #ffb74d; /* Laranja Suave - Preparando */
 }
 
 .status-READY_FOR_DELIVERY {
-    background-color: #66BB6A; /* Verde Suave - Pronto */
+  background-color: #66bb6a; /* Verde Suave - Pronto */
 }
 
 /* --- Botões de Ação --- */
 
 .card-actions {
-    display: flex;
-    justify-content: center; /* CENTRALIZA O BOTÃO */
-    margin-top: 20px;
+  display: flex;
+  justify-content: center; /* CENTRALIZA O BOTÃO */
+  margin-top: 20px;
 }
 
 .action-button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 1.1em; 
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    width: 90%; 
-    text-transform: uppercase;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.1em;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  width: 90%;
+  text-transform: uppercase;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Botão: Iniciar Preparo (CREATED -> PREPARING) */
 .prepare-button {
-    background-color: #FFB74D; /* Laranja Suave */
-    color: #121212;
+  background-color: #ffb74d; /* Laranja Suave */
+  color: #121212;
 }
 
 .prepare-button:hover {
-    background-color: #FFC973;
-    transform: translateY(-2px);
+  background-color: #ffc973;
+  transform: translateY(-2px);
 }
 
 /* Botão: Pronto para Entrega (PREPARING -> READY_FOR_DELIVERY) */
 .ready-button {
-    background-color: #66BB6A; /* Verde Suave */
-    color: #121212;
+  background-color: #66bb6a; /* Verde Suave */
+  color: #121212;
 }
 
 .ready-button:hover {
-    background-color: #81C784;
-    transform: translateY(-2px);
+  background-color: #81c784;
+  transform: translateY(-2px);
 }

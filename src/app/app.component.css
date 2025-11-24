@@ -46,7 +46,7 @@ main {
 
 /* Título/Branding - Casa de Vó */
 .brand-title {
-  color: #ffc107; /* Laranja/Dourado de destaque (do site) */
+  color: #f8d300; /* Laranja/Dourado de destaque (do site) */
   font-size: 180%; /* Aumentei um pouco para destaque */
   font-weight: 500;
   margin-right: 10px;
@@ -102,6 +102,9 @@ main {
 .moto-icon {
   position: absolute;
   display: fixed;
+
+  line-height: 0;
+  background: 2px;
 }
 
 /* 🎯 AUMENTANDO O TAMANHO DO ÍCONE DO CHEF */
